@@ -1,71 +1,82 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
-  <title>Updated reciepe app</title>
-  <h1 class="header">RECIEPE WEB-APP</h1>
-  <meta name="description" content="The HTML5 Herald">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Updated Recipe App</title>
+  <meta name="description" content="Simple recipe web app">
   <meta name="author" content="SitePoint">
-
   <link rel="stylesheet" href="styles.css">
-
 </head>
 
 <body>
-    <h5 class="description">This is a reciepe app where I have uploaded a couple of reciepes of my food stuff</h5>
-    <div> 
-        <p class="pavbhaji">No.1 Pav Bhaji</p>
-        <p class="ingredients" >Ingredients:
-        <ul class="items">
-          <li>Pav bhaji masala</li>  
-          <li>Potatoes</li>  
-          <li>Peas</li>  
-          <li>Bread</li>  
-          <li>Tomatoes</li>  
-        </ul>
-        </p>
-        <p class="procedure">
-        <span class='procedure_name'>Procedure:</span> For the mashed vegetables :At first take a vessel. Pour all the boiled vegetables inside it. Then with the help of a masher mash it completely. Then keep it aside.
+  <header class="site-header">
+    <h1 class="header">RECIPE WEB-APP</h1>
+    <p class="tagline">This is a recipe app where I have uploaded a couple of recipes of my food stuff</p>
+  </header>
 
-        For the bhaji:Again, take a tawa or pan which able it suitable for you . Heat some butter it it. Let the butter melt. And add chopped onions to it before the butter starts burning. Fry the onions till it becomes golden brown. Then add chopped tomatoes to it. Cook it for around 3–4 minutes. At this point of time add one tablespoon of ginger garlic paste to it. Cook it continuously on low to medium flame till the masala releases oil. Then add the spices like turmeric powder, chilli powder, salt, Garam masala powder, pav bhaji masala etc. Mix the spices well with the onions and tomatoes. Then add all the mashed veggies you had kept aside. Mix these well. Then add the required amount of water to it. It shouldn't be runny or soupy. The consistency should be medium to thick gravy.
-        
-        For the pav:Heat a tawa. Grease it with a little bit of butter. Place the pav on it. Toast it for 40–50 seconds on each side.
-        
-        For the plating: Take serving plate . Place the pav on one side. Then pour the bhaji on another side. Garnish with some slices of lemon, chopped onions, chopped coriander leaves. Pour some melted butter on the bhaji.
-        
-        And it's ready :)
-        </p>
-        <a href="https://lh3.googleusercontent.com/proxy/iDqVuWIXxfNb0L0UYwmLquufRibxw7PcUo8mMShb4AXheWogAQTjyAjnleO5tsv71xKMFEXQap7hOKQYmkeKHvVDHPi_UOpUJoBGVtJm30CDpObsS8gczgfp14AXk3OUuQA28-w5cZEFK7uneDVDkqAxML7yL4-MuPYu68Nn-7sUYajmQ6sDB86qUp2x2I6V3GrB">
-            <img class="image"  src="https://lh3.googleusercontent.com/proxy/iDqVuWIXxfNb0L0UYwmLquufRibxw7PcUo8mMShb4AXheWogAQTjyAjnleO5tsv71xKMFEXQap7hOKQYmkeKHvVDHPi_UOpUJoBGVtJm30CDpObsS8gczgfp14AXk3OUuQA28-w5cZEFK7uneDVDkqAxML7yL4-MuPYu68Nn-7sUYajmQ6sDB86qUp2x2I6V3GrB" alt=""/>
-        </a>
-        
-    </div>
-    
-    
-        <span>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-    <div>
-        <p class="pizza">No.2 Pizza</p>
-        <p class="ingredients" >Ingredients:
-        <ul class="items">
-            <li>Oregano</li>  
-            <li>Chilli Flakes</li>  
-            <li>Pizza base</li>  
-            <li>Veggies</li>    
-        </ul>
-        <p class="procedure">  <span class='procedure_name'>Procedure:</span> Spoon on the tomato sauce, sprinkle with cheese, and place your desired toppings on the pizza.
-             Sprinkle some cornmeal on the baking stone in the oven (watch your hands, the oven is hot!). Gently shake the peel to see if the dough will easily slide, if not, gently lift up the edges of the pizza and add a bit more cornmeal.
-    
-             Slide the pizza off of the peel and on to the baking stone in the oven.
-             Bake pizza one at a time until the crust is browned and the cheese is golden, about 10-15 minutes. If you want, toward the end of the cooking time you can sprinkle on a little more cheese.
-        </p>
-        <a href = " https://www.delonghi.com/Global/recipes/multifry/pizza_fresca.jpg">    
-            <img class="image" src="https://www.delonghi.com/Global/recipes/multifry/pizza_fresca.jpg" alt="" />
-        </a>
-    </div>
-    
+  <main>
+    <section id="pav-bhaji" class="recipe">
+      <h2>No.1 Pav Bhaji</h2>
 
-    <footer class="footer"> STAY TUNED FOR MORE RECIEPES ;)</footer>
+      <h3>Ingredients</h3>
+      <ul class="items ingredients">
+        <li>Pav bhaji masala</li>
+        <li>Potatoes</li>
+        <li>Peas</li>
+        <li>Bread</li>
+        <li>Tomatoes</li>
+      </ul>
+
+      <h3>Procedure</h3>
+      <p class="procedure">
+        <strong>For the mashed vegetables:</strong> Take a vessel and pour all the boiled vegetables inside it. Mash completely and keep aside.
+      </p>
+      <p class="procedure">
+        <strong>For the bhaji:</strong> Heat butter in a pan. Add chopped onions and fry until golden brown. Add chopped tomatoes and cook 3–4 minutes. Add 1 tbsp ginger-garlic paste and cook until masala releases oil. Add spices (turmeric, chilli powder, salt, garam masala, pav bhaji masala) and mix. Add the mashed vegetables and a little water to achieve a medium-thick gravy.
+      </p>
+      <p class="procedure">
+        <strong>For the pav:</strong> Heat a tawa, grease with butter and toast the pav 40–50 seconds per side.
+      </p>
+      <p class="procedure">
+        <strong>Plating:</strong> Serve pav and bhaji together, garnish with lemon slices, chopped onion and coriander, and a knob of melted butter.
+      </p>
+
+      <figure class="recipe-image">
+        <a href="https://lh3.googleusercontent.com/proxy/iDqVuWIXxfNb0L0UYwmLquufRibxw7PcUo8mMShb4AXheWogAQTjyAjnleO5tsv71xKMFEXQap7hOKQYmkeKHvVDHPi_UOpUJoBGVtJm30CDpObsS8gczgfp14AXk3OUuQA28-w5cZEFK7uneDVDkqAxML7yL4-MuPYu68Nn-7sUYajmQ6sDB86qUp2x2I6V3GrB" target="_blank" rel="noopener">
+          <img class="image" src="https://lh3.googleusercontent.com/proxy/iDqVuWIXxfNb0L0UYwmLquufRibxw7PcUo8mMShb4AXheWogAQTjyAjnleO5tsv71xKMFEXQap7hOKQYmkeKHvVDHPi_UOpUJoBGVtJm30CDpObsS8gczgfp14AXk3OUuQA28-w5cZEFK7uneDVDkqAxML7yL4-MuPYu68Nn-7sUYajmQ6sDB86qUp2x2I6V3GrB" alt="Pav Bhaji served with pav, lemon and coriander">
+          <figcaption>Pav Bhaji</figcaption>
+        </a>
+      </figure>
+    </section>
+
+    <hr>
+
+    <section id="pizza" class="recipe">
+      <h2>No.2 Pizza</h2>
+
+      <h3>Ingredients</h3>
+      <ul class="items ingredients">
+        <li>Oregano</li>
+        <li>Chilli flakes</li>
+        <li>Pizza base</li>
+        <li>Veggies</li>
+      </ul>
+
+      <h3>Procedure</h3>
+      <p class="procedure">
+        Spoon on tomato sauce, sprinkle with cheese, add desired toppings. Sprinkle cornmeal on the baking stone. Slide pizza onto the stone and bake until crust is browned and cheese is golden (about 10–15 minutes). Add extra cheese toward the end if desired.
+      </p>
+
+      <figure class="recipe-image">
+        <a href="https://www.delonghi.com/Global/recipes/multifry/pizza_fresca.jpg" target="_blank" rel="noopener">
+          <img class="image" src="https://www.delonghi.com/Global/recipes/multifry/pizza_fresca.jpg" alt="Fresh baked pizza">
+          <figcaption>Pizza</figcaption>
+        </a>
+      </figure>
+    </section>
+  </main>
+
+  <footer class="footer">STAY TUNED FOR MORE RECIPES :)</footer>
 </body>
 </html>

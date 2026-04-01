@@ -1,0 +1,188 @@
+:root {
+    --primary-color: #6366f1;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #334155;
+    --text-muted: #64748b;
+    --border-radius: 16px;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: white;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+}
+
+/* Search Section */
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 600px;
+    padding: 1.25rem 2rem;
+    font-size: 1.1rem;
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    background-color: white;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Loading Indicator & Spinner */
+.loading-indicator {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.loading-indicator::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 1.5rem auto 0;
+    border: 5px solid #e2e8f0;
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Meme Grid Container */
+#meme-container {
+    display: grid;
+    /* Mobile Layout: 1 column */
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+/* Small Tablet Layout: 2 columns */
+@media (min-width: 640px) {
+    #meme-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Large Tablet Layout: 3 columns */
+@media (min-width: 768px) {
+    #meme-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Desktop Layout: 4+ columns */
+@media (min-width: 1024px) {
+    #meme-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 2.5rem;
+    }
+}
+
+/* Meme Card Styling */
+.meme-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hover Effect */
+.meme-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.meme-image-container {
+    width: 100%;
+    /* Keep a uniform square area for clean grid lines */
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meme-image {
+    width: 100%;
+    height: 100%;
+    /* Ensure the entire meme text is visible without distorting its shape */
+    object-fit: contain; 
+    transition: transform 0.5s ease;
+}
+
+.meme-card:hover .meme-image {
+    transform: scale(1.08); /* slight zoom on image on hover */
+}
+
+.meme-title {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-color);
+    /* For long titles, truncate with an ellipsis... */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

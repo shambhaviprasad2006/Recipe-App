@@ -5,11 +5,26 @@
     --text-color: #334155;
     --text-muted: #64748b;
     --border-radius: 16px;
+    --header-bg-1: #6366f1;
+    --header-bg-2: #a855f7;
+    --image-bg: #f1f5f9;
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-/* Reset and base styles */
+[data-theme="dark"] {
+    --primary-color: #818cf8;
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --header-bg-1: #312e81;
+    --header-bg-2: #4c1d95;
+    --image-bg: #0f172a;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+    --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -22,18 +37,44 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Header */
 header {
+    position: relative;
     text-align: center;
     padding: 4rem 1rem 3rem;
-    background: linear-gradient(135deg, #6366f1, #a855f7);
+    background: linear-gradient(135deg, var(--header-bg-1), var(--header-bg-2));
     color: white;
     margin-bottom: 3rem;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    transition: background 0.3s ease;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
 }
 
 h1 {
@@ -49,33 +90,83 @@ main {
     padding: 0 1.5rem 4rem;
 }
 
-/* Search Section */
-.search-section {
+.controls-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
     margin-bottom: 4rem;
 }
 
-#search-input {
+@media (min-width: 640px) {
+    .controls-section {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .search-container {
+        flex: 1;
+        max-width: 300px;
+    }
+    .filter-sort-container {
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .search-container {
+        max-width: 500px;
+    }
+}
+
+.search-container {
     width: 100%;
-    max-width: 600px;
-    padding: 1.25rem 2rem;
-    font-size: 1.1rem;
+}
+
+.filter-sort-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+#search-input,
+#filter-select,
+#sort-select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
     border: 2px solid transparent;
     border-radius: 9999px;
-    background-color: white;
+    background-color: var(--card-bg);
+    color: var(--text-color);
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
     outline: none;
 }
 
-#search-input:focus {
+#filter-select,
+#sort-select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5L6 8L9.5 4.5' stroke='%23334155' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    padding-right: 3rem;
+}
+
+[data-theme="dark"] #filter-select,
+[data-theme="dark"] #sort-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5L6 8L9.5 4.5' stroke='%23f8fafc' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+#search-input:focus,
+#filter-select:focus,
+#sort-select:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
     transform: translateY(-2px);
 }
 
-/* Loading Indicator & Spinner */
 .loading-indicator {
     text-align: center;
     padding: 3rem;
@@ -101,16 +192,13 @@ main {
     100% { transform: rotate(360deg); }
 }
 
-/* Meme Grid Container */
 #meme-container {
     display: grid;
-    /* Mobile Layout: 1 column */
     grid-template-columns: 1fr; 
     gap: 1.5rem;
     align-items: stretch;
 }
 
-/* Small Tablet Layout: 2 columns */
 @media (min-width: 640px) {
     #meme-container {
         grid-template-columns: repeat(2, 1fr);
@@ -118,7 +206,6 @@ main {
     }
 }
 
-/* Large Tablet Layout: 3 columns */
 @media (min-width: 768px) {
     #meme-container {
         grid-template-columns: repeat(3, 1fr);
@@ -126,7 +213,6 @@ main {
     }
 }
 
-/* Desktop Layout: 4+ columns */
 @media (min-width: 1024px) {
     #meme-container {
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -134,7 +220,6 @@ main {
     }
 }
 
-/* Meme Card Styling */
 .meme-card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
@@ -144,9 +229,9 @@ main {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
-/* Hover Effect */
 .meme-card:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
@@ -154,25 +239,24 @@ main {
 
 .meme-image-container {
     width: 100%;
-    /* Keep a uniform square area for clean grid lines */
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    background-color: #f1f5f9;
+    background-color: var(--image-bg);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease;
 }
 
 .meme-image {
     width: 100%;
     height: 100%;
-    /* Ensure the entire meme text is visible without distorting its shape */
     object-fit: contain; 
     transition: transform 0.5s ease;
 }
 
 .meme-card:hover .meme-image {
-    transform: scale(1.08); /* slight zoom on image on hover */
+    transform: scale(1.08);
 }
 
 .meme-title {
@@ -181,8 +265,51 @@ main {
     font-weight: 600;
     text-align: center;
     color: var(--text-color);
-    /* For long titles, truncate with an ellipsis... */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.like-btn {
+    appearance: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    color: #cbd5e1;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] .like-btn {
+    background: rgba(30, 41, 59, 0.8);
+    color: #475569;
+}
+
+.like-btn:hover {
+    transform: scale(1.1);
+}
+
+.like-btn.liked {
+    color: #ef4444 !important;
+    animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
 }
